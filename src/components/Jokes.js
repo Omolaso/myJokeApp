@@ -18,6 +18,12 @@ const Jokes = () => {
         generateJoke()
     }, [])
 
+    if(jokes.length === 0){
+        return(
+            <h3>Please Wait...</h3>
+        )
+    }
+
     
 
   return (
