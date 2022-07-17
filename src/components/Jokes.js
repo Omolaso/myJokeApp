@@ -5,13 +5,14 @@ import laugh from '../laugh.svg';
 const Jokes = () => {
     const [jokes, setJoke] = useState('');
     const generateJoke = () => {
-        axios.get('http://api.icndb.com/jokes/random')
+        axios.get('https://api.chucknorris.io/jokes/random')
         .then((res) => {
-            setJoke(res.data.value)
+            setJoke(res.data)
+            // console.log(res.data)
         })
     }
 
-    const { joke } = jokes
+    const { value } = jokes
 
     useEffect(() => {
         generateJoke()
@@ -23,7 +24,7 @@ const Jokes = () => {
    <section>
     <div className='container'>
         <h1>Chuck Norris Jokes<span><img src={laugh} id='image' alt='laugh'/></span></h1>
-        <p dangerouslySetInnerHTML ={ {__html: joke}} id='joke'/>
+        <p dangerouslySetInnerHTML ={ {__html: value}} id='joke'/>
         <button onClick={generateJoke}> Next Joke</button>
     </div>
    </section>
