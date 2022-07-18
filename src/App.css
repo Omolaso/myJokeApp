@@ -24,6 +24,7 @@ section{
   max-width: 800px;
   padding: 2rem;
   border-radius: 5px;
+  max-height: 80vh;
 }
 
 h1{
