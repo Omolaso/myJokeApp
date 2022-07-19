@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import '../App.css';
 import laugh from '../laugh.svg';
+import icon from '../images/icon.svg'
+
 const Jokes = () => {
     const [jokes, setJoke] = useState('');
     const generateJoke = () => {
@@ -20,7 +22,10 @@ const Jokes = () => {
 
     if(jokes.length === 0){
         return(
-            <h3>Please Wait...</h3>
+            <div className='wait'>
+                <img id='image1' src= { icon } alt="Please Wait..."/>
+                <h1>Please Wait...</h1>
+            </div>
         )
     }
 

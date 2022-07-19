@@ -12,6 +12,25 @@ section{
   padding: 2rem;
 }
 
+.wait{
+  margin: 30vh auto ;
+}
+
+#image1{
+  animation: icon 10s linear infinite;
+  width: 150px;
+  height: 150px;
+}
+
+@keyframes icon {
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+
 .container{
   margin: auto;
   background-color: aliceblue;
