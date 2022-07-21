@@ -10,6 +10,7 @@ section{
   height: 100vh;
   background: purple;
   padding: 2rem;
+  display: flex;
 }
 
 .wait{
@@ -46,8 +47,8 @@ section{
   max-height: 80vh;
 }
 
-h1{
-  font-size: 45px;
+h2{
+  font-size: 35px;
 }
 
 p{

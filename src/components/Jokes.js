@@ -34,7 +34,7 @@ const Jokes = () => {
   return (
    <section>
     <div className='container'>
-        <h1>Chuck Norris Jokes<span><img src={laugh} id='image' alt='laugh'/></span></h1>
+        <h2>My Joke App<span><img src={laugh} id='image' alt='laugh'/></span></h2>
         <p dangerouslySetInnerHTML ={ {__html: value}} id='joke'/>
         <button onClick={generateJoke}> Next Joke</button>
     </div>
