@@ -1,45 +1,38 @@
-import axios from 'axios';
-import React, { useState, useEffect } from 'react';
-import '../App.css';
-import laugh from '../laugh.svg';
-import icon from '../images/icon.svg'
+import React from "react";
+import axios from "axios";
+import laugh from "../images/laugh.svg";
+import useSWR from "swr";
+import Spinner from "./Spinner";
+import ErrorMsg from "./ErrorMsg";
+
+const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 const Jokes = () => {
-    const [jokes, setJoke] = useState('');
-    const generateJoke = () => {
-        axios.get('https://api.chucknorris.io/jokes/random')
-        .then((res) => {
-            setJoke(res.data)
-            // console.log(res.data)
-        })
-    }
+  const { data, error, isLoading } = useSWR(
+    "https://api.chucknorris.io/jokes/random",
+    fetcher,
+    { suspense: true, refreshInterval: 3500 }
+  );
 
-    const { value } = jokes
+  const { value } = data;
 
-    useEffect(() => {
-        generateJoke()
-    }, [])
-
-    if(jokes.length === 0){
-        return(
-            <div className='wait'>
-                <img id='image1' src= { icon } alt="Please Wait..."/>
-                <h1>Please Wait...</h1>
-            </div>
-        )
-    }
-
-    
+  if (isLoading) return <Spinner />;
+  if (error) return <ErrorMsg />;
 
   return (
-   <section>
-    <div className='container'>
-        <h2>My Joke App<span><img src={laugh} id='image' alt='laugh'/></span></h2>
-        <p dangerouslySetInnerHTML ={ {__html: value}} id='joke'/>
-        <button onClick={generateJoke}> Next Joke</button>
-    </div>
-   </section>
-  )
-}
+    <section>
+      <div className="container">
+        <h2>
+          My Joke App
+          <span>
+            <img src={laugh} className="image2" alt="laugh" />
+          </span>
+        </h2>
+        <p dangerouslySetInnerHTML={{ __html: value }} id="joke" />
+        {/* <button type="button">Next</button> */}
+      </div>
+    </section>
+  );
+};
 
-export default Jokes
+export default Jokes;

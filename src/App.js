@@ -1,10 +1,12 @@
-import Jokes from './components/Jokes';
+import { Suspense } from "react";
+import Jokes from "./components/Jokes";
+import Spinner from "./components/Spinner";
 
 function App() {
   return (
-    <div>
-      <Jokes/>
-    </div>
+    <Suspense fallback={<Spinner />}>
+      <Jokes />
+    </Suspense>
   );
 }
 
